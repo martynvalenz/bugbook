@@ -61,19 +61,28 @@ export async function POST(
       error:'Unauthorized'
     },{status:401})
 
-    await prisma.follow.upsert({
-      where:{
-        followerId_followingId:{
+    await prisma.$transaction([
+      prisma.follow.upsert({
+        where:{
+          followerId_followingId:{
+            followerId:loggedInUser.id,
+            followingId:userId
+          }
+        },
+        create:{
           followerId:loggedInUser.id,
           followingId:userId
+        },
+        update:{}
+      }),
+      prisma.notification.create({
+        data:{
+          issuerId:loggedInUser.id,
+          type:'FOLLOW',
+          recipientId:userId
         }
-      },
-      create:{
-        followerId:loggedInUser.id,
-        followingId:userId
-      },
-      update:{}
-    })
+      })
+    ])
     
     return new Response()
   }
@@ -95,12 +104,21 @@ export async function DELETE(
       error:'Unauthorized'
     },{status:401})
 
-    await prisma.follow.deleteMany({
-      where:{
-        followerId:loggedInUser.id,
-        followingId:userId
-      }
-    })
+    await prisma.$transaction([
+      prisma.notification.deleteMany({
+        where:{
+          issuerId:loggedInUser.id,
+          recipientId:userId,
+          type:'FOLLOW'
+        }
+      }),
+      prisma.follow.deleteMany({
+        where:{
+          followerId:loggedInUser.id,
+          followingId:userId
+        }
+      })
+    ])
 
     return new Response()
   }
