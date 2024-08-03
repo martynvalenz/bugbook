@@ -37,7 +37,7 @@ const Notification = ({notification}:Props) => {
   return (
     <Link href={href} className="block">
       <article className={cn('flex gap-3 rounded-2xl bg-card p-5 shadow-sm transition-colors hover:bg-card/70',
-        notification.read && 'bg-primary/70'
+        !notification.read && 'bg-primary/70'
       )}>
         <div className="my-1">
           {icon}
