@@ -62,7 +62,7 @@ const ProfilePage = async({params:{username}}:PageProps) => {
         <UserProfile user={user} loggedInUserId={loggedInUser.id}/>
         <div className="rounded-2xl bg-card p-5 shadow-sm">
           <h2 className="text-center text-2xl font-bold">
-            {user.displayName}'s posts
+            {user.displayName}&apos;s posts
           </h2>
         </div>
         <UserPostsFeed userId={user.id}/>
