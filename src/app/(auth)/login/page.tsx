@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import logInImage from '@/assets/login-image.jpg'
 import LoginForm from "./LoginForm"
+import GoogleSignInButton from "../GoogleSignInButton"
 
 export const metadata:Metadata = {
   title: 'Login',
@@ -19,6 +20,12 @@ const LoginPage = () => {
             <p className="text-muted-foreground">A place where even <span className="italic text-emerald-500">you</span> can find a friend</p>
           </div>
           <div className="space-y-5">
+            <GoogleSignInButton />
+            <div className="flex items-center gap-3">
+              <div className="h-px flex-1 bg-muted"/>
+              <span>or</span>
+              <div className="h-px flex-1 bg-muted"/>
+            </div>
             <LoginForm />
             <Link href="/signup" className="block text-center hover:underline">
               Don't have an account? Sign up

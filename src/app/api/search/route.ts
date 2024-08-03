@@ -1,28 +1,45 @@
-import { validateRequest } from "@/auth"
-import prisma from "@/lib/prisma"
-import { getPostDataInclude, type PostsPage } from "@/lib/types"
-import { NextRequest, NextResponse } from "next/server"
+import { validateRequest } from "@/auth";
+import prisma from "@/lib/prisma";
+import { getPostDataInclude, PostsPage } from "@/lib/types";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req:NextRequest) {
+export async function GET(req:NextRequest){
   try {
+    const q = req.nextUrl.searchParams.get('q') || ''
     const cursor = req.nextUrl.searchParams.get('cursor') || undefined
     // await new Promise(r => setTimeout(r, 4000))
-    const pageSize = 5
+    const pageSize = 10
 
     const {user} = await validateRequest()
     if(!user) return NextResponse.json({
       error:'Unauthorized'
     },{status:401})
 
+    const searchQuery = q.split(' ').join(' & ')
+
     const posts = await prisma.post.findMany({
       where:{
-        user:{
-          fallowers:{
-            some:{
-              followerId:user.id
+        OR:[
+          {
+            content:{
+              search:searchQuery
+            }
+          },
+          {
+            user:{
+              displayName:{
+                search:searchQuery
+              }
+            }
+          },
+          {
+            user:{
+              username:{
+                search:searchQuery
+              }
             }
           }
-        }
+        ]
       },
       include:getPostDataInclude(user.id),
       orderBy:{
@@ -41,7 +58,6 @@ export async function GET(req:NextRequest) {
     }
 
     return NextResponse.json(data)
-
   } catch (error) {
     console.error(error)
     return NextResponse.json({

@@ -1,4 +1,4 @@
-import { validateRequest } from "@/app/auth"
+import { validateRequest } from "@/auth"
 import prisma from "@/lib/prisma"
 import { Loader2 } from "lucide-react"
 import { Suspense } from "react"

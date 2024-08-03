@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { validateRequest } from "../auth";
+import { validateRequest } from "@/auth";
 import { redirect } from "next/navigation";
 import SessionProvider from "./SessionProvider";
 import Navbar from "./Navbar";

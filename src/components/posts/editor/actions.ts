@@ -1,6 +1,6 @@
 'use server'
 
-import { validateRequest } from "@/app/auth"
+import { validateRequest } from "@/auth"
 import prisma from "@/lib/prisma"
 import { getPostDataInclude } from "@/lib/types"
 import { createPostSchema } from "@/lib/validation"

@@ -1,4 +1,4 @@
-import { validateRequest } from '@/app/auth'
+import { validateRequest } from '@/auth'
 import prisma from '@/lib/prisma'
 import streamServerClient from '@/lib/stream'
 import {createUploadthing, type FileRouter} from 'uploadthing/next'

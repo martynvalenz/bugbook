@@ -1,7 +1,7 @@
 'use server'
 
 import { cookies } from "next/headers";
-import { lucia, validateRequest } from "../auth"
+import { lucia, validateRequest } from "@/auth"
 import { redirect } from "next/navigation";
 
 export async function logout() {

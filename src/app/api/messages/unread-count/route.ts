@@ -1,4 +1,4 @@
-import { validateRequest } from "@/app/auth"
+import { validateRequest } from "@/auth"
 import streamServerClient from "@/lib/stream"
 import { type MessageCountInfo } from "@/lib/types"
 import { NextResponse } from "next/server"

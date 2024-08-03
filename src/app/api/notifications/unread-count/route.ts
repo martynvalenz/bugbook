@@ -1,4 +1,4 @@
-import { validateRequest } from "@/app/auth"
+import { validateRequest } from "@/auth"
 import prisma from "@/lib/prisma"
 import { type NotificationCountInfo } from "@/lib/types"
 import { NextResponse } from "next/server"

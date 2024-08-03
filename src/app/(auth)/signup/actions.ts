@@ -1,6 +1,6 @@
 'use server'
 
-import { lucia } from "@/app/auth";
+import { lucia } from "@/auth";
 import prisma from "@/lib/prisma";
 import streamServerClient from "@/lib/stream";
 import { signUpSchema, SignUpVaues } from "@/lib/validation";

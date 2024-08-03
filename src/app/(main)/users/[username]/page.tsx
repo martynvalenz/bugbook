@@ -1,4 +1,4 @@
-import { validateRequest } from "@/app/auth"
+import { validateRequest } from "@/auth"
 import FollowButton from "@/components/FollowButton"
 import { FollowerCount } from "@/components/FollowerCount"
 import TrendsSidebar from "@/components/TrendsSidebar"

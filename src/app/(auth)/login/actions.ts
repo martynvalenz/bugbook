@@ -1,6 +1,6 @@
 'use server'
 
-import { lucia } from "@/app/auth";
+import { lucia } from "@/auth";
 import prisma from "@/lib/prisma";
 import { loginSchema, LoginValues } from "@/lib/validation";
 import { isRedirectError } from "next/dist/client/components/redirect";
