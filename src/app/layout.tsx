@@ -18,8 +18,8 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | bugbook",
-    default: "bugbook",
+    template: "%s | Bugbook",
+    default: "Bugbook",
   },
   description: "The social media app for powernerds",
 };
