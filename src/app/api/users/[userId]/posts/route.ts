@@ -8,6 +8,7 @@ export async function GET(req:NextRequest,
 ) {
   try {
     const cursor = req.nextUrl.searchParams.get('cursor') || undefined
+    console.log(cursor)
     const pageSize = 5
 
     const {user} = await validateRequest()

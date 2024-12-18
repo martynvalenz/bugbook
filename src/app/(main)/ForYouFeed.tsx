@@ -26,6 +26,8 @@ const ForYouFeed = () => {
     getNextPageParam: (lastPage) => lastPage.nextCursor
   })
 
+  console.log(data)
+
   const posts = data?.pages.flatMap(page => page.posts) || []
 
   if(status == 'pending'){

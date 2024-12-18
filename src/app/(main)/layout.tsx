@@ -19,7 +19,7 @@ export default async function MainLayout({
     >
       <div className="flex min-h-screen flex-col bg-slate-50 dark:bg-black">
         <Navbar />
-        <div className="flex  w-full grow gap-5 max-w-7xl mx-auto p-5">
+        <div className="flex w-full grow gap-5 max-w-7xl mx-auto p-5">
           <MenuBar
             className="sticky top-[5.25rem] h-fit hidden sm:block flex-none space-y-3 rounded-2xl bg-card px-3 py-5 lg:px-5 shadow-sm xl:w-80"
           />
